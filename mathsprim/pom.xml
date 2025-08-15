@@ -6,29 +6,30 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.imf</groupId>
 	<artifactId>mathsprim</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mathsprim</name>
-	<description>Demo project for Spring Boot</description>
-	<url/>
+	<description>Maths</description>
 	<licenses>
-		<license/>
+    <license>
+      <name>Apache 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
 	</licenses>
 	<developers>
-		<developer/>
+    <developer>
+      <name>Ignasi Moya</name>
+      <email>imoyadv@gmail.com</email>
+    </developer>
 	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+
 	<properties>
 		<java.version>21</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -39,7 +40,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+    <dependency>
+      <groupId>org.xerial</groupId>
+      <artifactId>sqlite-jdbc</artifactId>
+      <version>3.50.3.0</version>
+    </dependency> 
 	</dependencies>
 
 	<build>
@@ -48,6 +56,28 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.27.0</version>
+        <configuration>
+          <rulesets>
+            <ruleset>rulesets/java/quickstart.xml</ruleset>
+          </rulesets>
+          <includeTests>true</includeTests>
+          <targetJdk>21</targetJdk>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+              <goal>cpd-check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
 		</plugins>
 	</build>
 
